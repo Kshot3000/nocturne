@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nocturne — Private Messaging on Midnight</title>
+  <meta name="description" content="Nocturne is a private messenger for the Midnight chain — end-to-end-encrypted DMs, a sealed personal mailbox, and quiet rails to send Midnight (NIGHT), Cardano (ADA) and Bitcoin (BTC). No servers. Your keys.">
+  <meta property="og:title" content="Nocturne — Private Messaging on Midnight">
+  <meta property="og:description" content="Cardano by day. Nocturne by night. Encrypted DMs, a private mailbox and quiet NIGHT · ADA · BTC rails. No servers, no landlord.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<!-- ============================================================
+     LANDING
+     ============================================================ -->
+<div id="site">
+
+  <header class="nav">
+    <a class="brand" href="#top">
+      <svg class="moon-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M22.5 12.9A9.5 9.5 0 1 1 11.1 1.5a8 8 0 1 0 11.4 11.4Z" fill="#ffffff"/>
+        <circle cx="17" cy="5" r="1" fill="#ffffff"/>
+      </svg>
+      Nocturne
+      <span class="brand-tag">on Midnight</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#midnight">Midnight</a>
+      <a href="#how">How it works</a>
+      <a href="#honesty">Honesty</a>
+      <a href="#donate">Donate</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="x-link" href="https://x.com/kshot9000" target="_blank" rel="noopener" aria-label="Nocturne on X">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93ZM17.61 20.64h2.04L6.49 3.24H4.3Z"/></svg>
+        @kshot9000
+      </a>
+      <button class="btn btn-primary" data-act="enter">Enter Nocturne</button>
+      <button class="nav-burger" id="nav-burger" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <p class="kicker">A privacy app for Midnight · Cardano’s night side</p>
+      <h1>Whisper across the <span class="grad">dark.</span></h1>
+      <p class="lede">
+        Nocturne is a private messenger for <b>Midnight</b> — the fourth-generation
+        blockchain that brings rational privacy to the Cardano ecosystem.
+        End-to-end-encrypted DMs, a sealed personal mailbox, and quiet rails to move
+        <b>Midnight (NIGHT)</b>, <b>Cardano (ADA)</b> and <b>Bitcoin (BTC)</b>.
+        No servers, no landlord, no accounts on anyone’s ledger: your keys,
+        your words, your coins.
+      </p>
+      <div class="hero-cta">
+        <button class="btn btn-primary btn-lg" data-act="enter">Enter Nocturne</button>
+        <a class="btn btn-ghost btn-lg" href="#how">How it works</a>
+      </div>
+      <ul class="hero-stats">
+        <li><b>0</b><span>servers or backends</span></li>
+        <li><b>AES-256-GCM</b><span>seal on all local data</span></li>
+        <li><b>NIGHT · ADA · BTC</b><span>quiet rails</span></li>
+        <li><b>100%</b><span>keys stay in your browser</span></li>
+      </ul>
+
+      <div class="hero-moon" aria-hidden="true">
+        <svg viewBox="0 0 400 400" fill="none">
+          <defs>
+            <radialGradient id="mg" cx="35%" cy="30%" r="80%">
+              <stop offset="0%" stop-color="#f5f5f5"/>
+              <stop offset="45%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#8a8a8a"/>
+            </radialGradient>
+            <mask id="cut">
+              <rect width="400" height="400" fill="white"/>
+              <circle cx="290" cy="140" r="152" fill="black"/>
+            </mask>
+          </defs>
+          <circle cx="200" cy="205" r="150" fill="url(#mg)" mask="url(#cut)" opacity="0.92"/>
+          <circle cx="320" cy="90" r="2.4" fill="#ffffff"/>
+          <circle cx="352" cy="140" r="1.6" fill="#f0f0f0"/>
+          <circle cx="300" cy="60" r="1.4" fill="#ffffff"/>
+          <circle cx="365" cy="75" r="1.2" fill="#ffffff"/>
+          <circle cx="120" cy="330" r="1.6" fill="#b3b3b3"/>
+          <circle cx="70" cy="280" r="1.2" fill="#ffffff"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="section">
+      <header class="section-head reveal">
+        <p class="kicker">Features</p>
+        <h2>Everything a quiet conversation needs.</h2>
+      </header>
+      <div class="grid features-grid">
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 8.5-8.5 8.38 8.38 0 0 1 8.5 8.5z"/></svg>
+          </div>
+          <h3>Encrypted DMs</h3>
+          <p>Messenger-grade chat — typing, delivery ticks, presence — with every word sealed by AES-256-GCM before it touches your browser’s storage.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          </div>
+          <h3>Private mailbox</h3>
+          <p>Claim <b>you@nocturne.night</b> and read/write in a mailbox that has no landlord, no inbox on a server, and no one else’s key.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          </div>
+          <h3>Send NIGHT · ADA · BTC</h3>
+          <p>Quiet rails for Midnight, Cardano and Bitcoin. Addresses validated per-chain, fees shown upfront, and a real scannable QR on every send.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="7" rx="2"/><rect x="2" y="14" width="20" height="7" rx="2"/><path d="M6 6.5h.01M6 17.5h.01"/></svg>
+          </div>
+          <h3>Zero servers</h3>
+          <p>The whole app is static files — perfect for GitHub Pages. There is no backend to breach, leak, subpoena, or keep up at night.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>
+          </div>
+          <h3>Your keys</h3>
+          <p>Keys are generated in your browser and never leave it. An optional passphrase keeps the device key wrapped at rest.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Honest by design</h3>
+          <p>What’s real is real; what’s simulated is labelled. A static site can’t relay transactions — and Nocturne won’t pretend otherwise.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MIDNIGHT -->
+    <section id="midnight" class="section-dark">
+      <div class="section" style="padding-top:clamp(3rem,7vh,5rem);padding-bottom:clamp(3rem,7vh,5rem)">
+        <header class="section-head reveal" style="max-width:760px">
+          <p class="kicker">☾ Midnight — rational privacy</p>
+          <h2>Midnight. Privacy that is rational, not total.</h2>
+          <p>
+            Midnight is a fourth-generation blockchain built to bring <b>rational privacy</b>
+            to blockchain: zero-knowledge proofs protect sensitive data, programmable privacy
+            lets you disclose exactly what’s necessary — and only when it’s necessary — and a
+            predictable cost model brings real-world finance on-chain.
+            Nocturne is what a conversation feels like on that side of the ledger:
+            messages sealed before they leave your hands, a mailbox with no landlord,
+            and rails that move money without announcing it.
+          </p>
+        </header>
+        <div class="grid mid-cards">
+          <div class="card mid-card reveal">
+            <span class="num" aria-hidden="true">1</span>
+            <div>
+              <h3>Programmable privacy</h3>
+              <p class="muted">All user data stays shielded; only what’s necessary is disclosed, when it’s necessary. Nocturne lives at “private” by default.</p>
+            </div>
+          </div>
+          <div class="card mid-card reveal">
+            <span class="num" aria-hidden="true">2</span>
+            <div>
+              <h3>NIGHT → DUST economy</h3>
+              <p class="muted">NIGHT is Midnight’s utility token — it continuously generates DUST, the resource that powers transactions. Predictable costs, every time.</p>
+            </div>
+          </div>
+          <div class="card mid-card reveal">
+            <span class="num" aria-hidden="true">3</span>
+            <div>
+              <h3>Dual-state ledger</h3>
+              <p class="muted">A hybrid model: UTXOs and account-state contracts update in one atomic step, with a public on-chain state and a private local state linked by ZK proofs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section">
+      <header class="section-head reveal">
+        <p class="kicker">How it works</p>
+        <h2>Three steps into the dark.</h2>
+      </header>
+      <div class="steps">
+        <div class="card step reveal">
+          <span class="n">Step 1 · Identity</span>
+          <h3>Create your handle</h3>
+          <p>Pick a handle, set a passphrase (optional), and your sealed mailbox <b>you@nocturne.night</b> comes alive — right in this browser.</p>
+        </div>
+        <div class="card step reveal">
+          <span class="n">Step 2 · Channel</span>
+          <h3>Pick your channel</h3>
+          <p>A DM, a mail note, or a send of NIGHT, ADA or BTC. Every channel validates, seals and keeps its own record locally.</p>
+        </div>
+        <div class="card step reveal">
+          <span class="n">Step 3 · Send</span>
+          <h3>Send into the dark</h3>
+          <p>Review with a real scannable QR, broadcast, and watch the (simulated) confirmation land in Activity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HONESTY -->
+    <section id="honesty" class="section">
+      <header class="section-head reveal">
+        <p class="kicker">Honesty</p>
+        <h2>Real, and demo, on the record.</h2>
+      </header>
+      <div class="grid honesty-grid">
+        <div class="card h-card reveal">
+          <h3>What’s real</h3>
+          <ul class="h-list">
+            <li><span class="mark">✓</span> End-to-end sealing of all local data — AES-256-GCM via WebCrypto, keys generated on your device</li>
+            <li><span class="mark">✓</span> Real, scannable QR codes for every address you send to</li>
+            <li><span class="mark">✓</span> Per-chain address validation for NIGHT, ADA and BTC</li>
+            <li><span class="mark">✓</span> Zero servers — the entire app is static files you can host anywhere</li>
+          </ul>
+        </div>
+        <div class="card h-card sim reveal">
+          <h3>What’s simulated</h3>
+          <ul class="h-list">
+            <li><span class="mark">☾</span> Other people — seeded residents with canned replies, so the messenger feels alive</li>
+            <li><span class="mark">☾</span> Broadcasts &amp; confirmations — nothing is signed or relayed; a static site has no wallet to sign with</li>
+            <li><span class="mark">☾</span> Mail delivery — mail is kept in your local, sealed inbox; it is not routed to anyone</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- DONATE -->
+    <section id="donate" class="section">
+      <header class="section-head reveal">
+        <p class="kicker">Support</p>
+        <h2>Keep the lights low.</h2>
+        <p>
+          Nocturne is built by <a href="https://x.com/kshot9000" target="_blank" rel="noopener">@kshot9000</a> —
+          maker of the Cardano SPO Tracker, NightDream.io and EUTXO.DEX.
+          If a quiet corner of the web kept a light on for you, coffee in any chain works.
+        </p>
+      </header>
+      <div class="donate-grid">
+        <div class="donation reveal" style="--c:#9a9a9a">
+          <div class="don-top">
+            <span class="don-icon" style="--c:#9a9a9a" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="22" height="22"><g fill="#fff"><circle cx="16" cy="16" r="3.4"/><circle cx="16" cy="6.8" r="2.3"/><circle cx="24" cy="11.4" r="2.3"/><circle cx="24" cy="20.6" r="2.3"/><circle cx="16" cy="25.2" r="2.3"/><circle cx="8" cy="20.6" r="2.3"/><circle cx="8" cy="11.4" r="2.3"/></g></svg>
+            </span>
+            <span class="don-label">Cardano (ADA)</span>
+          </div>
+          <code class="don-addr">addr1q8hnl6vl5a6k3rw3n5g3jtte696zcl76kfatzv7gpswa9r0dj7fma6klq55y4ffm7tf0em09udnyhuk4ah92pl5x9jpqjae44v</code>
+          <div class="don-actions">
+            <button class="link" data-copy="addr1q8hnl6vl5a6k3rw3n5g3jtte696zcl76kfatzv7gpswa9r0dj7fma6klq55y4ffm7tf0em09udnyhuk4ah92pl5x9jpqjae44v" data-label="ADA address">Copy</button>
+            <a class="link" href="https://cardanoscan.io/addresses/addr1q8hnl6vl5a6k3rw3n5g3jtte696zcl76kfatzv7gpswa9r0dj7fma6klq55y4ffm7tf0em09udnyhuk4ah92pl5x9jpqjae44v" target="_blank" rel="noopener">View on CardanoScan</a>
+          </div>
+        </div>
+        <div class="donation reveal" style="--c:#cfcfcf">
+          <div class="don-top">
+            <span class="don-icon" style="--c:#cfcfcf" aria-hidden="true">₿</span>
+            <span class="don-label">Bitcoin (BTC)</span>
+          </div>
+          <code class="don-addr">3GnR7TWBXAB3pPztBWpNF4LMNEX5yX8vZK</code>
+          <div class="don-actions">
+            <button class="link" data-copy="3GnR7TWBXAB3pPztBWpNF4LMNEX5yX8vZK" data-label="BTC address">Copy</button>
+            <a class="link" href="https://mempool.space/address/3GnR7TWBXAB3pPztBWpNF4LMNEX5yX8vZK" target="_blank" rel="noopener">View on mempool.space</a>
+          </div>
+        </div>
+        <div class="donation reveal" style="--c:#b3b3b3">
+          <div class="don-top">
+            <span class="don-icon" style="--c:#b3b3b3" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="22" height="22"><path d="M16 3.5 27 9.75v12.5L16 28.5 5 22.25V9.75z" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><path d="M11 11.6h10v2.5H11zm0 4.9h10v2.5H11zm0 4.9h6.4v2.5H11z" fill="#fff"/></svg>
+            </span>
+            <span class="don-label">Ergo (ERG)</span>
+          </div>
+          <code class="don-addr">9fcM5RWnAjmP4vx5bnW6yohB6H9bLq8sJbaPLHtwZLtQPB32Pvy</code>
+          <div class="don-actions">
+            <button class="link" data-copy="9fcM5RWnAjmP4vx5bnW6yohB6H9bLq8sJbaPLHtwZLtQPB32Pvy" data-label="ERG address">Copy</button>
+            <a class="link" href="https://explorer.ergoplatform.com/addresses/9fcM5RWnAjmP4vx5bnW6yohB6H9bLq8sJbaPLHtwZLtQPB32Pvy" target="_blank" rel="noopener">View on Ergo explorer</a>
+          </div>
+        </div>
+      </div>
+      <p class="don-note reveal" style="margin-top:1rem">
+        A Midnight (NIGHT) donation address is on the way — the rail is already in the app. ☾
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot-row">
+      <a class="brand" href="#top">
+        <svg class="moon-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M22.5 12.9A9.5 9.5 0 1 1 11.1 1.5a8 8 0 1 0 11.4 11.4Z" fill="#ffffff"/>
+        </svg>
+        Nocturne
+        <span class="brand-tag">on Midnight</span>
+      </a>
+      <div class="foot-links">
+        <a href="https://x.com/kshot9000" target="_blank" rel="noopener">X · @kshot9000</a>
+        <a href="#features">Features</a>
+        <a href="#donate">Donate</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+    <p class="foot-legal">
+      Cardano by day. Nocturne by night. Nocturne is a community project and a design preview for a
+      private messenger on the Midnight chain. It is not affiliated with the Midnight or Cardano
+      foundations. Broadcasts and confirmations in the Send tab are simulated — no transaction is
+      ever signed or relayed from this site. Donations in ADA, BTC or ERG are gratefully received
+      by the addresses above. © <span id="year">2026</span> kshot9000.
+    </p>
+  </footer>
+</div>
+
+<!-- ============================================================
+     APP
+     ============================================================ -->
+<div id="app" class="app hidden" aria-hidden="true">
+  <header class="app-bar">
+    <a class="brand" href="#top" data-act="to-site">
+      <svg class="moon-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M22.5 12.9A9.5 9.5 0 1 1 11.1 1.5a8 8 0 1 0 11.4 11.4Z" fill="#ffffff"/>
+      </svg>
+      Nocturne
+    </a>
+
+    <div class="app-id">
+      <span class="avatar sm" id="app-avatar">N</span>
+      <span class="who">
+        <b id="app-handle">@you</b>
+        <small id="app-mailbox">you@nocturne.night</small>
+      </span>
+      <span class="badge-lock" id="app-lock">🔒 AES-256-GCM</span>
+    </div>
+
+    <div class="app-actions">
+      <button class="link" data-act="ask-clear">Clear local data</button>
+      <button class="btn btn-ghost" data-act="to-site">← Site</button>
+    </div>
+  </header>
+
+  <div class="app-body">
+    <aside class="app-side">
+      <div class="tabs" role="tablist" aria-label="Sections">
+        <button class="tab-btn active" data-act="tab" data-tab="messages" role="tab"><span class="ti">💬</span>Chats</button>
+        <button class="tab-btn" data-act="tab" data-tab="mail" role="tab"><span class="ti">✉</span>Mail</button>
+        <button class="tab-btn" data-act="tab" data-tab="send" role="tab"><span class="ti">☾</span>Send</button>
+        <button class="tab-btn" data-act="tab" data-tab="activity" role="tab"><span class="ti">≡</span>Activity</button>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+    <main class="app-main" id="app-main"></main>
+  </div>
+</div>
+
+<!-- ============================================================
+     MODALS
+     ============================================================ -->
+
+<!-- Onboarding -->
+<div id="m-onboard" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Create your Nocturne identity">
+  <div class="modal-card">
+    <h2>Create your Nocturne identity</h2>
+    <p class="sub">Everything is generated in this browser. A device key is minted here, and all your chats, mail and sends are sealed with it before storage.</p>
+    <form id="ob-form" novalidate>
+      <label>Handle
+        <span class="handle-row">
+          <span class="handle-prefix">@</span>
+          <input id="ob-handle" type="text" autocomplete="off" spellcheck="false" placeholder="stargazer" maxlength="24">
+        </span>
+      </label>
+      <div class="mailbox-preview" id="ob-mailbox">yourhandle@nocturne.night</div>
+      <label>Passphrase <span class="faint">(optional, recommended)</span>
+        <input id="ob-pass" type="password" autocomplete="new-password" placeholder="locks your sealed data">
+      </label>
+      <label>Confirm passphrase
+        <input id="ob-pass2" type="password" autocomplete="new-password" placeholder="once again">
+      </label>
+      <p class="hint">With a passphrase, your device key stays wrapped in this browser. Without one, it is stored in plain local storage — fine for a demo, less so for secrets.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close="m-onboard">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="ob-go">Enter Nocturne</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Unlock -->
+<div id="m-unlock" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Unlock Nocturne">
+  <div class="modal-card">
+    <h2>Unlock Nocturne</h2>
+    <p class="sub">Your sealed data is locked with a passphrase. Enter it to unwrap your device key — the key itself is never stored in plain form.</p>
+    <form id="ul-form" novalidate>
+      <label>Passphrase
+        <input id="ul-pass" type="password" autocomplete="current-password" placeholder="••••••••">
+      </label>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close="m-unlock">Cancel</button>
+        <button type="submit" class="btn btn-primary">Unlock</button>
+      </div>
+    </form>
+    <p class="hint" style="margin-top:1rem;margin-bottom:0">Forgot it? The seal cannot be broken — that’s the point. You can erase local data and start fresh.</p>
+    <button class="link" id="ul-reset" style="color:var(--bad)">Erase local data &amp; start over</button>
+  </div>
+</div>
+
+<!-- New chat -->
+<div id="m-newchat" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="New chat">
+  <div class="modal-card">
+    <h2>New chat</h2>
+    <p class="sub">Demo mode: any handle becomes a resident. Seeded residents: @nocturne, @moon_whisper, @ada_dev, @btc_ghost.</p>
+    <form id="nc-form" novalidate>
+      <label>Handle
+        <span class="handle-row">
+          <span class="handle-prefix">@</span>
+          <input id="nc-handle" type="text" autocomplete="off" spellcheck="false" placeholder="moon_whisper" maxlength="24">
+        </span>
+      </label>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close="m-newchat">Cancel</button>
+        <button type="submit" class="btn btn-primary">Create chat</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Compose mail -->
+<div id="m-compose" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Compose mail">
+  <div class="modal-card">
+    <h2>Compose</h2>
+    <p class="sub">From <b id="cm-from"></b> · mail is sealed and kept locally; mail to your own handle also lands in your inbox.</p>
+    <form id="compose-form" novalidate>
+      <label>To
+        <input id="cm-to" type="text" autocomplete="off" spellcheck="false" placeholder="someone@nocturne.night">
+      </label>
+      <label>Subject
+        <input id="cm-subj" type="text" maxlength="140" placeholder="a quiet hello">
+      </label>
+      <label>Message
+        <textarea id="cm-body" maxlength="4000" placeholder="The dark is a good listener…"></textarea>
+      </label>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close="m-compose">Cancel</button>
+        <button type="submit" class="btn btn-primary">Send mail</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Review send -->
+<div id="m-review" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Review send">
+  <div class="modal-card wide">
+    <div class="rv-head">
+      <span class="rv-coin" id="rv-asset-dot" style="--c:#ffffff">☾</span>
+      <div>
+        <h2>Review this send</h2>
+        <small>Sealed before broadcast · confirmation is simulated</small>
+      </div>
+    </div>
+
+    <div class="rv-qr" id="rv-qr" aria-label="Recipient address QR code"></div>
+
+    <div class="rv-rows">
+      <div class="rv-row"><span>From</span><b id="rv-from">@you</b></div>
+      <div class="rv-row"><span>To</span><b class="rv-addr" id="rv-addr-full">—</b></div>
+      <div class="rv-row"><span>Amount</span><b id="rv-amount">—</b></div>
+      <div class="rv-row"><span>Network fee (demo)</span><b id="rv-fee">—</b></div>
+      <div class="rv-row"><span>Memo</span><b id="rv-memo">—</b></div>
+    </div>
+    <div style="display:flex;gap:.6rem;margin-bottom:1rem">
+      <button class="link" id="rv-copy">📋 Copy address</button>
+    </div>
+
+    <div id="rv-progress">
+      <div class="steps-box">
+        <div class="step"><span class="mk"></span><b>Sealing payload (AES-256-GCM)</b></div>
+        <div class="step"><span class="mk"></span><b>Broadcasting</b></div>
+        <div class="step"><span class="mk"></span><b>1 confirmation (simulated)</b></div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close="m-review">Cancel</button>
+        <button type="button" class="btn btn-primary" id="rv-broadcast">Broadcast (simulated)</button>
+      </div>
+    </div>
+
+    <div id="rv-success" class="rv-success hidden">
+      <div class="big" aria-hidden="true">✓</div>
+      <h2>Sent into the dark</h2>
+      <p class="muted">Simulated broadcast recorded in Activity. No transaction was relayed — this is a static site.</p>
+      <div class="hash-box" id="tx-hash" title="Click to copy">0x…</div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close="m-review">Close</button>
+        <button type="button" class="btn btn-primary" id="rv-done">Open Activity</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Clear data -->
+<div id="m-clear" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Clear local data">
+  <div class="modal-card">
+    <h2>Clear local data?</h2>
+    <p class="sub">This erases your identity, chats, mail and activity from this browser’s storage. There is no server copy — it is gone.</p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" data-close="m-clear">Keep it</button>
+      <button type="button" class="btn btn-danger" id="clear-go">Erase everything</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/vendor/qrcode.js"></script>
+<script src="js/data.js"></script>
+<script src="js/crypto.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
