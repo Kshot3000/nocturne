@@ -39,8 +39,8 @@
 
   /* ---------- state ---------- */
   const LS_KEY = 'nocturne.v1';
-  const NC = window.NocturneCrypto;
-  const C = window.NOCTURNE;
+  const NC = NocturneCrypto;
+  const C = NOCTURNE;
 
   let S = null; // app state {profile, convos, mail, txs}
   let KEY = null; // CryptoKey (aes) or rawKey b64 (xor)
