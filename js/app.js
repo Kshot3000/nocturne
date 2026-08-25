@@ -949,13 +949,22 @@
     if (yr) yr.textContent = new Date().getFullYear();
   }
 
-  /* ---------- starfield ---------- */
+  /* ---------- starfield: twinkling stars, shooting stars, a clock striking midnight ---------- */
   function initStars() {
     const cv = document.getElementById('stars');
     if (!cv) return;
     const ctx = cv.getContext('2d');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const TAU = Math.PI * 2;
     let stars = [];
+    let meteors = [];
+    let pulses = [];
+    let glow = 0;
+    /* Minute hand in clock terms (0 = 12 o'clock), time-lapsed: a full sweep
+       every 60 s, so the clock visibly creeps toward 12 and strikes once a minute. */
+    let theta = TAU - Math.PI / 6; /* starts at 11:00 */
+    const THETA_SPEED = TAU / 60;
+
     function seed() {
       const n = Math.min(230, Math.floor((cv.width * cv.height) / 9000));
       stars = Array.from({ length: n }, () => ({
@@ -966,27 +975,163 @@
         s: 0.4 + Math.random() * 1.2
       }));
     }
-    function resize() {
-      cv.width = window.innerWidth;
-      cv.height = window.innerHeight;
-      seed();
-      if (reduced) frame();
+
+    function clockGeom() {
+      const r = Math.min(cv.width, cv.height) * 0.15;
+      return { x: cv.width * 0.86, y: cv.height * 0.78, r };
     }
-    function frame() {
+
+    function spawnMeteor() {
+      if (meteors.length >= 3) return;
+      const dir = Math.random() < 0.5 ? 1 : -1;
+      const ang = 0.22 + Math.random() * 0.22;
+      const speed = 6.5 + Math.random() * 6;
+      meteors.push({
+        x: cv.width * (0.2 + Math.random() * 0.6),
+        y: cv.height * (0.04 + Math.random() * 0.3),
+        vx: dir * speed * Math.cos(ang),
+        vy: speed * Math.sin(ang) + 2.5,
+        len: 120 + Math.random() * 150,
+        life: 1,
+        decay: 0.014 + Math.random() * 0.012
+      });
+    }
+
+    function drawClock() {
+      const { x, y, r } = clockGeom();
+      const faceA = 0.10 + glow * 0.32;
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255,255,255,' + faceA.toFixed(3) + ')';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, TAU);
+      ctx.stroke();
+      for (let i = 0; i < 12; i++) {
+        const a = (i / 12) * TAU - Math.PI / 2;
+        const inner = i % 3 === 0 ? r * 0.86 : r * 0.92;
+        ctx.lineWidth = i % 3 === 0 ? 2 : 1;
+        ctx.beginPath();
+        ctx.moveTo(x + Math.cos(a) * inner, y + Math.sin(a) * inner);
+        ctx.lineTo(x + Math.cos(a) * r * 0.985, y + Math.sin(a) * r * 0.985);
+        ctx.stroke();
+      }
+      const mA = theta - Math.PI / 2;
+      const hA = theta / 12 - Math.PI / 2;
+      ctx.strokeStyle = 'rgba(255,255,255,' + Math.min(1, 0.3 + glow * 0.5).toFixed(3) + ')';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + Math.cos(mA) * r * 0.78, y + Math.sin(mA) * r * 0.78);
+      ctx.stroke();
+      ctx.lineWidth = 2.6;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + Math.cos(hA) * r * 0.5, y + Math.sin(hA) * r * 0.5);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.beginPath();
+      ctx.arc(x, y, 2.4, 0, TAU);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawPulses() {
+      const { x, y } = clockGeom();
+      pulses = pulses.filter((p) => p.alpha > 0.015);
+      for (const p of pulses) {
+        p.rad += (p.rad - clockGeom().r) * 0.045 + 1.6;
+        p.alpha *= 0.955;
+        ctx.strokeStyle = 'rgba(255,255,255,' + p.alpha.toFixed(3) + ')';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(x, y, p.rad, 0, TAU);
+        ctx.stroke();
+      }
+    }
+
+    function drawMeteors() {
+      meteors = meteors.filter((m) => m.life > 0.02);
+      for (const m of meteors) {
+        m.x += m.vx;
+        m.y += m.vy;
+        m.life -= m.decay;
+        const a = Math.max(0, Math.min(1, m.life));
+        const d = Math.hypot(m.vx, m.vy) || 1;
+        const tx = m.x - (m.vx / d) * m.len;
+        const ty = m.y - (m.vy / d) * m.len;
+        const grad = ctx.createLinearGradient(m.x, m.y, tx, ty);
+        grad.addColorStop(0, 'rgba(255,255,255,' + (0.85 * a).toFixed(3) + ')');
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(m.x, m.y);
+        ctx.lineTo(tx, ty);
+        ctx.stroke();
+        ctx.fillStyle = 'rgba(255,255,255,' + (0.9 * a).toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, 1.6, 0, TAU);
+        ctx.fill();
+      }
+    }
+
+    let last = performance.now();
+    function frame(now) {
+      const dt = Math.min(0.05, Math.max(0, (now - last) / 1000));
+      last = now;
       ctx.clearRect(0, 0, cv.width, cv.height);
+
+      /* advance the clock; a midnight strike when the minute hand wraps past 12 */
+      const prev = theta % TAU;
+      theta += THETA_SPEED * dt;
+      glow *= Math.pow(0.5, dt * 1.0);
+      if ((theta % TAU) < prev) {
+        pulses.push({ rad: clockGeom().r * 1.02, alpha: 0.34 });
+        pulses.push({ rad: clockGeom().r * 0.9, alpha: 0.22 });
+        glow = 1;
+      }
+
+      drawClock();
+      drawPulses();
+
       for (const st of stars) {
         st.p += 0.012 * st.s;
         ctx.globalAlpha = 0.22 + 0.6 * (0.5 + 0.5 * Math.sin(st.p));
         ctx.fillStyle = st.r > 1.1 ? '#e8e8e8' : '#b3b3b3';
         ctx.beginPath();
-        ctx.arc(st.x, st.y, st.r, 0, 7);
+        ctx.arc(st.x, st.y, st.r, 0, TAU);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      if (Math.random() < 0.006 + dt * 0.12) spawnMeteor();
+      drawMeteors();
+    }
+
+    function drawStatic() {
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      drawClock();
+      for (const st of stars) {
+        ctx.globalAlpha = 0.5;
+        ctx.fillStyle = st.r > 1.1 ? '#e8e8e8' : '#b3b3b3';
+        ctx.beginPath();
+        ctx.arc(st.x, st.y, st.r, 0, TAU);
         ctx.fill();
       }
       ctx.globalAlpha = 1;
     }
+
+    function resize() {
+      cv.width = window.innerWidth;
+      cv.height = window.innerHeight;
+      seed();
+      if (reduced) drawStatic();
+    }
     window.addEventListener('resize', resize);
     resize();
-    if (!reduced) (function loop() { frame(); requestAnimationFrame(loop); })();
+    if (!reduced) {
+      (function loop(now) { frame(now); requestAnimationFrame(loop); })(performance.now());
+    }
   }
 
   /* ---------- boot ---------- */
