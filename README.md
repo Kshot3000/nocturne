@@ -123,3 +123,7 @@ it is the single source of truth.
 Nocturne is a community project and a design preview. It is **not affiliated** with
 the Midnight or Cardano foundations. Broadcasts in the Send tab are simulated; no
 transaction is ever signed or relayed from this site. Not financial advice.
+
+## Midnight builders
+
+See [`BUILDERS.md`](./BUILDERS.md) for wallet discovery, MPS-0029, and preferred starters (`example-bboard` / `create-mn-app`).
