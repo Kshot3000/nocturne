@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — lost in the dark · Nocturne</title>
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/svg+xml" href="/nocturne/assets/favicon.svg">
+  <link rel="stylesheet" href="/nocturne/css/style.css">
+  <style>
+    .lost {
+      min-height: 100vh; display: grid; place-items: center; text-align: center;
+      padding: 2rem; position: relative; z-index: 1;
+    }
+    .lost h1 { font-size: clamp(2.4rem, 6vw, 4rem); margin: 0 0 .4rem; letter-spacing: -.02em; }
+    .lost p { color: #9a9a9a; max-width: 28rem; margin: 0 auto 1.4rem; line-height: 1.55; }
+    .lost .btn { margin: 0 .35rem; }
+  </style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="lost">
+  <div>
+    <p class="kicker" style="letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;color:#777;margin-bottom:.8rem">404 · Nocturne</p>
+    <h1>This path went dark.</h1>
+    <p>No relay, no mailbox, no whisper here — just empty night. Head back to the messenger.</p>
+    <a class="btn btn-primary" href="/nocturne/">Enter Nocturne</a>
+    <a class="btn btn-ghost" href="https://x.com/kshot9000" target="_blank" rel="noopener">@kshot9000</a>
+  </div>
+</div>
+<script src="/nocturne/js/data.js"></script>
+<script>
+  // Minimal starfield (same vibe as the app; no full boot)
+  (function () {
+    const c = document.getElementById('stars');
+    if (!c) return;
+    const ctx = c.getContext('2d');
+    let w, h, stars = [];
+    function resize() {
+      w = c.width = window.innerWidth;
+      h = c.height = window.innerHeight;
+      stars = Array.from({ length: 80 }, () => ({
+        x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.4 + 0.2, a: Math.random()
+      }));
+    }
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      for (const s of stars) {
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(255,255,255,' + (0.25 + s.a * 0.55) + ')';
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    resize(); draw();
+    window.addEventListener('resize', () => { resize(); draw(); });
+  })();
+</script>
+</body>
+</html>

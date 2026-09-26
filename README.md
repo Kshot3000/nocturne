@@ -2,6 +2,8 @@
 
 **Cardano by day. Nocturne by night.**
 
+**Live:** https://kshot3000.github.io/nocturne/
+
 Nocturne is a private messenger for **Midnight** — the fourth-generation blockchain
 that brings rational privacy to the Cardano ecosystem: a Messenger-style chat,
 a sealed personal mailbox, and quiet rails to send **Midnight (NIGHT)**, **Cardano (ADA)**
@@ -64,7 +66,7 @@ Then open <http://localhost:8080>.
 
 ## Deploy to GitHub Pages
 
-1. Create a new repository (e.g. `nocturne-messenger`).
+1. Create a new repository (e.g. `nocturne`).
 2. Push this folder:
 
    ```
@@ -72,14 +74,14 @@ Then open <http://localhost:8080>.
    git add .
    git commit -m "Nocturne — private messaging on Midnight"
    git branch -M main
-   git remote add origin https://github.com/<YOUR-USERNAME>/nocturne-messenger.git
+   git remote add origin https://github.com/<YOUR-USERNAME>/nocturne.git
    git push -u origin main
    ```
 
 3. In the repo: **Settings → Pages → Source: `main` branch, root (`/`)** → Save.
 4. Within a couple of minutes the site is live at
-   `https://<your-user-or-org>.github.io/nocturne-messenger/`
-   (or `https://<your-user>.github.io/` if the repo is named `<your-user>.github.io`).
+   `https://kshot3000.github.io/nocturne/`
+   (already configured for this repo: Pages → `main` / root).
 
 All asset paths are relative, so it works on both project pages and a user/org root.
 `404.html` is included for Pages' custom 404.
@@ -87,7 +89,7 @@ All asset paths are relative, so it works on both project pages and a user/org r
 ## Project structure
 
 ```
-nocturne-messenger/
+nocturne/
 ├── index.html            # landing + app shell + modals (single page)
 ├── 404.html              # themed 404 for GitHub Pages
 ├── css/style.css         # Midnight design system
@@ -103,6 +105,22 @@ nocturne-messenger/
 
 To change assets, fees, contacts or donation addresses, edit **`js/data.js`** —
 it is the single source of truth.
+
+
+## Sister projects
+
+| Project | Role |
+| --- | --- |
+| [NightDream.io](https://kshot3000.github.io/NightDream.io/) | Cardano + Midnight analytics desk |
+| [Midnight-GrokBot-Agent](https://github.com/Kshot3000/Midnight-GrokBot-Agent) | Compact lab · Agent Escrow · Lace kit |
+| [Cardano-Midnight-Qwen-Builder](https://github.com/Kshot3000/Cardano-Midnight-Qwen-Builder) | Agent builds + Agent Escrow JS/Python reference |
+
+## On-chain roadmap (honest)
+
+A cross-device messenger needs a relay and a Midnight identity story. When that lands:
+
+- Prefer live Compact starters [`example-bboard`](https://github.com/midnightntwrk/example-bboard) + [`create-mn-app`](https://github.com/midnightntwrk/create-mn-app) (Example Counter is **archived**).
+- Never authorize privileged circuits with `ownPublicKey()` alone (**MPS-0029**) — use witness-derived role commitments.
 
 ## Identity & support
 
