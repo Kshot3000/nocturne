@@ -862,7 +862,11 @@
   /* ---------- tabs ---------- */
   function setTab(tab) {
     TAB = tab;
-    $$('.tab-btn').forEach((b) => b.classList.toggle('active', b.dataset.tab === tab));
+    $$('.tab-btn').forEach((b) => {
+      const on = b.dataset.tab === tab;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
     if (tab === 'mail') MAIL_VIEW = { tab: MAIL_VIEW.tab, id: null };
     if (tab === 'messages' && mqMobile()) chatOpen = false;
     renderMain();
@@ -924,16 +928,36 @@
         sendMsg();
       }
     });
+
+    /* Escape closes the topmost open modal, or the mobile nav if it is open */
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const open = $$('.modal:not(.hidden)');
+      if (open.length) {
+        closeModal(open[open.length - 1].id);
+        return;
+      }
+      const links = $('.nav-links');
+      if (links && links.classList.contains('open')) {
+        links.classList.remove('open');
+        const b = $('#nav-burger');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
   /* ---------- landing page bits ---------- */
   function initLanding() {
     const burger = $('#nav-burger');
     if (burger) burger.addEventListener('click', () => {
-      $('.nav-links').classList.toggle('open');
+      const links = $('.nav-links');
+      const open = links.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
     $$('.nav-links a').forEach((a) => a.addEventListener('click', () => {
       $('.nav-links').classList.remove('open');
+      const b = $('#nav-burger');
+      if (b) b.setAttribute('aria-expanded', 'false');
     }));
 
     const io = ('IntersectionObserver' in window)

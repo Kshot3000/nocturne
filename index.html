@@ -8,9 +8,10 @@
   <meta property="og:title" content="Nocturne — Private Messaging on Midnight">
   <meta property="og:description" content="Cardano by day. Nocturne by night. Encrypted DMs, a private mailbox and quiet NIGHT · ADA · BTC rails. No servers, no landlord.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kshot3000.github.io/nocturne/">
   <meta name="theme-color" content="#000000">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=1">
 </head>
 <body>
 
@@ -31,7 +32,7 @@
       <span class="brand-tag">on Midnight</span>
     </a>
 
-    <nav class="nav-links" aria-label="Primary">
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
       <a href="#features">Features</a>
       <a href="#midnight">Midnight</a>
       <a href="#how">How it works</a>
@@ -45,7 +46,7 @@
         @kshot9000
       </a>
       <button class="btn btn-primary" data-act="enter">Enter Nocturne</button>
-      <button class="nav-burger" id="nav-burger" aria-label="Menu">☰</button>
+      <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
     </div>
   </header>
 
@@ -263,7 +264,7 @@
         <h2>Keep the lights low.</h2>
         <p>
           Nocturne is built by <a href="https://x.com/kshot9000" target="_blank" rel="noopener">@kshot9000</a> —
-          maker of the Cardano SPO Tracker, NightDream.io and EUTXO.DEX.
+          maker of the Cardano SPO Tracker, NightDream.xyz and EUTXO.DEX.
           If a quiet corner of the web kept a light on for you, coffee in any chain works.
         </p>
       </header>
@@ -324,7 +325,7 @@
       <div class="foot-links">
         <a href="https://x.com/kshot9000" target="_blank" rel="noopener">X · @kshot9000</a>
         <a href="https://kshot3000.github.io/nocturne/" target="_blank" rel="noopener">Live site</a>
-        <a href="https://kshot3000.github.io/NightDream.io/" target="_blank" rel="noopener">NightDream</a>
+        <a href="https://nightdream.xyz/" target="_blank" rel="noopener">NightDream</a>
         <a href="#features">Features</a>
         <a href="#donate">Donate</a>
         <a href="#top">Back to top ↑</a>
@@ -370,10 +371,10 @@
   <div class="app-body">
     <aside class="app-side">
       <div class="tabs" role="tablist" aria-label="Sections">
-        <button class="tab-btn active" data-act="tab" data-tab="messages" role="tab"><span class="ti">💬</span>Chats</button>
-        <button class="tab-btn" data-act="tab" data-tab="mail" role="tab"><span class="ti">✉</span>Mail</button>
-        <button class="tab-btn" data-act="tab" data-tab="send" role="tab"><span class="ti">☾</span>Send</button>
-        <button class="tab-btn" data-act="tab" data-tab="activity" role="tab"><span class="ti">≡</span>Activity</button>
+        <button class="tab-btn active" data-act="tab" data-tab="messages" role="tab" aria-selected="true"><span class="ti">💬</span>Chats</button>
+        <button class="tab-btn" data-act="tab" data-tab="mail" role="tab" aria-selected="false"><span class="ti">✉</span>Mail</button>
+        <button class="tab-btn" data-act="tab" data-tab="send" role="tab" aria-selected="false"><span class="ti">☾</span>Send</button>
+        <button class="tab-btn" data-act="tab" data-tab="activity" role="tab" aria-selected="false"><span class="ti">≡</span>Activity</button>
       </div>
       <div class="side-list" id="side-list"></div>
     </aside>
@@ -538,9 +539,9 @@
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-<script src="js/vendor/qrcode.js"></script>
-<script src="js/data.js"></script>
-<script src="js/crypto.js"></script>
-<script src="js/app.js"></script>
+<script src="js/vendor/qrcode.js?v=1"></script>
+<script src="js/data.js?v=1"></script>
+<script src="js/crypto.js?v=1"></script>
+<script src="js/app.js?v=1"></script>
 </body>
 </html>

@@ -99,9 +99,23 @@ nocturne/
 │   ├── app.js            # messenger, mail, send, activity, onboarding, unlock
 │   └── vendor/qrcode.js  # qrcode-generator 1.4.4 (Kazuhiko Arase, MIT)
 ├── assets/favicon.svg
+├── tests/smoke.test.mjs  # dependency-free smoke tests (node --test tests/smoke.test.mjs)
 ├── serve.bat / serve.ps1 # zero-dependency local server
 └── README.md
 ```
+
+## Tests & cache-busting
+
+```
+node --test tests/smoke.test.mjs
+```
+
+Covers the per-chain address validators, the AES-256-GCM / XOR sealing
+round-trips, and the asset-versioning rule below.
+
+Every CSS/JS reference in `index.html` and `404.html` carries a `?v=` cache
+key. **Bump the key on every change to that file** — without it, GitHub Pages /
+CDN caches can serve stale code to returning visitors long after a fix ships.
 
 To change assets, fees, contacts or donation addresses, edit **`js/data.js`** —
 it is the single source of truth.
@@ -111,7 +125,7 @@ it is the single source of truth.
 
 | Project | Role |
 | --- | --- |
-| [NightDream.io](https://kshot3000.github.io/NightDream.io/) | Cardano + Midnight analytics desk |
+| [NightDream.xyz](https://nightdream.xyz/) | Cardano + Midnight analytics desk |
 | [Midnight-GrokBot-Agent](https://github.com/Kshot3000/Midnight-GrokBot-Agent) | Compact lab · Agent Escrow · Lace kit |
 | [Cardano-Midnight-Qwen-Builder](https://github.com/Kshot3000/Cardano-Midnight-Qwen-Builder) | Agent builds + Agent Escrow JS/Python reference |
 
