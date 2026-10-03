@@ -14,7 +14,7 @@ and **Bitcoin (BTC)**.
 - Everything local is sealed with **AES-256-GCM** (WebCrypto) before it touches
   `localStorage`. Keys are generated in the browser and never leave it.
 - Optional **passphrase** keeps the device key wrapped at rest.
-- Real, scannable **QR codes** on every send; per-chain **address validation** for NIGHT, ADA and BTC.
+- Real, scannable **QR codes** on every send; per-chain **address validation** for NIGHT, ADA and BTC — checksum-real for ADA/BTC (bech32/bech32m and Base58Check are verified, so a one-character typo is rejected, not waved through).
 - Honest by design: what's simulated is labelled (see the Honesty panel on the site).
 
 ---
@@ -110,7 +110,9 @@ nocturne/
 node --test tests/smoke.test.mjs
 ```
 
-Covers the per-chain address validators, the AES-256-GCM / XOR sealing
+Covers the per-chain address validators (including bech32/bech32m and
+Base58Check checksum truth tables — valid reference addresses pass, every
+single-character corruption fails), the AES-256-GCM / XOR sealing
 round-trips, and the asset-versioning rule below.
 
 Every CSS/JS reference in `index.html` and `404.html` carries a `?v=` cache
